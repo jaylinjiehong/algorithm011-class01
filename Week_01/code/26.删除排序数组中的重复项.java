@@ -7,6 +7,7 @@
  *          3、返回数组新长度
  *          4、O(1)额外空间
  * 解法：快慢指针
+ * 优化：减少不必要的操作：快慢指针是邻居时，不复制。
  */
 
 // @lc code=start
@@ -27,7 +28,9 @@ class Solution {
 
         for( ; quickPointer < length; quickPointer++){
             if(nums[slowPointer] != nums[quickPointer]){
-                nums[++slowPointer] = nums[quickPointer];
+                if(quickPointer - slowPointer++ > 1){
+                    nums[slowPointer] = nums[quickPointer];
+                }
             }
         }
 
