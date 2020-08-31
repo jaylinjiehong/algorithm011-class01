@@ -56,15 +56,13 @@ class Solution {
         Set<Integer> visited = new HashSet<>();
         Deque<Integer> queue = new LinkedList<>();
         queue.addLast(0);
+        visited.add(0);
         while(!queue.isEmpty()){
-            int size = queue.size();
-            for(int i=0;i<size;i++){
-                int room = queue.removeFirst();
-                if(!visited.contains(room)){
-                    visited.add(room);
-                    for(Integer tempRoom: rooms.get(room)){
-                        queue.addLast(tempRoom);
-                    }
+            int room = queue.removeFirst();
+            for(int item :  rooms.get(room)){
+                if(!visited.contains(item)){
+                    visited.add(item);
+                    queue.offer(item);
                 }
             }
         }
@@ -75,11 +73,30 @@ class Solution {
         }
     }
 }
+
 ```
 
 ### javaScript
 
--
+-   [Web technology for developers/ JavaScript/ JavaScript reference/ Standard built-in objectsSet](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set)
+
+-   [JS 中的算法与数据结构——队列(Queue)](https://juejin.im/entry/6844903498027368462)
+
+```
+
+var canVisitAllRooms = function(rooms, key = 0, keys = new Set()) {
+
+    if (keys.has(key)) return;
+
+    keys.add(key);
+
+    rooms[key].forEach(k => canVisitAllRooms(rooms, k, keys));
+
+    return keys.size == rooms.length;
+
+};
+
+```
 
 ### kotlin
 
