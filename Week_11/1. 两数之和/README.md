@@ -1,7 +1,5 @@
 ## [1. 两数之和](https://leetcode-cn.com/problems/two-sum/)
 
-### bash
-
 ### c
 
 ### cpp
@@ -39,6 +37,31 @@ class Solution {
 ```
 
 ### javaScript
+
+-   [Web technology for developers/ JavaScript/ JavaScript reference/ Standard built-in objectsArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+-   [Web technology for developers/ JavaScript/ JavaScript reference/ Standard built-in objectsMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
+
+```
+var twoSum = function(nums, target) {
+    const map = {};
+    for (let i = 0; i < nums.length; i++) {
+        const another = target - nums[i];
+        if (another in map) {
+            return [map[another], i];
+        }
+        map[nums[i]] = i;
+    }
+    return null;
+};
+
+```
+
+#### 复杂度分析
+
+-   时间复杂度：O(n)
+
+-   空间复杂度：O(n)
 
 ### kotlin
 
